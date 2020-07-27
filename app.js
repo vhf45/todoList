@@ -89,12 +89,15 @@ app.get('/api', function(req, res){
 });
 
 // listen for requests
-const currentPort = 4000;
-app.listen(process.env.PORT || currentPort, function(){
-  console.log("Server activated - now listening for requests on port: " + process.env.PORT ||currentPort);
+// const currentPort = 4000;
+// app.listen(process.env.PORT || currentPort, function(){
+//   console.log("Server activated - now listening for requests on port: " + process.env.PORT ||currentPort);
+// });
+
+// LISTEN ON PORT 3000, REPLACED WITH process.env.PORT, process.env.IP AS ON C9
+app.listen(process.env.PORT || 4000, process.env.IP, function(){
+  console.log("Server started on port: " + process.env.PORT);
 });
-
-
 
 
 

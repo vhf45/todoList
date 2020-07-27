@@ -33,7 +33,7 @@ $(document).ready(function(){
         todos.forEach(function(todo){
           console.log(todo.name)
           // create list item
-          let createListItem = $('<li class="task">' + todo.name + todo.completed + '<span>X</span></li>');
+          let createListItem = $('<li class="task">' + todo.name + '<span>X</span></li>');
           // store value of id of each list member
           createListItem.data('id', todo._id)
           // store value of completed status of each list member
@@ -66,7 +66,7 @@ $(document).ready(function(){
       // we receive the newly created toDo back so can deal with it here
       .then(function(newTodo){
           console.log(newTodo)
-          let createNewItem = $('<li class="task">' + newTodo.name + newTodo.completed + '<span>X</span></li>');
+          let createNewItem = $('<li class="task">' + newTodo.name + '<span>X</span></li>');
           if(newTodo.completed){
             createNewItem.addClass("done")
           }
