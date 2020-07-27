@@ -15,7 +15,7 @@ app.use(bodyParser.urlencoded({extended: true}))
 
 // MONGODB SETUP
 const mongoose = require('mongoose')
-const url = 'mongodb://127.0.0.1:27017/chapter13apis'
+const url = process.env.DATABASEURL || 'mongodb://127.0.0.1:27017/chapter13apis'
 
 mongoose.connect(url, { useNewUrlParser: true })
 
