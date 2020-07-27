@@ -8,6 +8,8 @@ const path = require('path');
 // set up express
 const app = express();
 
+require('dotenv').config();
+
 // set up body parser
 const bodyParser = require('body-parser')
 app.use(bodyParser.json())
@@ -15,7 +17,10 @@ app.use(bodyParser.urlencoded({extended: true}))
 
 // MONGODB SETUP
 const mongoose = require('mongoose')
-const url = process.env.DATABASEURL || 'mongodb://127.0.0.1:27017/chapter13apis'
+// const url = process.env.DATABASEURL || 'mongodb://127.0.0.1:27017/chapter13apis'
+
+// const url = process.env.DATABASEURL
+const url = "mongodb://testuser1:Qwerty22.@ds137863.mlab.com:37863/todolist"
 
 mongoose.connect(url, { useNewUrlParser: true })
 
@@ -82,8 +87,8 @@ app.get('/api', function(req, res){
 
 // listen for requests
 const currentPort = 4000;
-app.listen(process.env.port || 4000, function(){
-  console.log("Server activated - now listening for requests on port: " + currentPort);
+app.listen(process.env.port || currentPort, function(){
+  console.log("Server activated - now listening for requests on port: " + process.env.port ||currentPort);
 });
 
 
