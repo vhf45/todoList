@@ -19,15 +19,18 @@ app.use(bodyParser.urlencoded({extended: true}))
 const mongoose = require('mongoose')
 // const url = process.env.DATABASEURL || 'mongodb://127.0.0.1:27017/chapter13apis'
 
+const getUrl = require('./models');
+console.log(`url: ${getUrl.url}`);
 // const url = process.env.DATABASEURL
-const url = "mongodb://testuser1:Qwerty22.@ds137863.mlab.com:37863/todolist"
+//const url = "mongodb://testuser1:Qwerty22.@ds137863.mlab.com:37863/todolist"
+// const url = 'mongodb://127.0.0.1:27017/chapter13apis'
 
-mongoose.connect(url, { useNewUrlParser: true })
+mongoose.connect(getUrl.url, { useNewUrlParser: true })
 
 const db = mongoose.connection
 
 db.once('open', _ => {
-  console.log('Database connected:', url)
+  console.log('Database connected:', getUrl.url)
 })
 
 db.on('error', err => {
@@ -87,8 +90,8 @@ app.get('/api', function(req, res){
 
 // listen for requests
 const currentPort = 4000;
-app.listen(process.env.port || currentPort, function(){
-  console.log("Server activated - now listening for requests on port: " + process.env.port ||currentPort);
+app.listen(process.env.PORT || currentPort, function(){
+  console.log("Server activated - now listening for requests on port: " + process.env.PORT ||currentPort);
 });
 
 
